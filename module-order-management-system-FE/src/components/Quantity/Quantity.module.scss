@@ -1,0 +1,21 @@
+.quantity {
+    display: flex;
+    border-radius: 8px;
+    outline: 4px solid var(--grey);
+    margin-top: 16px;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    background-color: var(--light-grey);
+    color: var(--black);
+}
+
+.change {
+    &:hover {
+        background-color: var(--grey);
+    }
+}

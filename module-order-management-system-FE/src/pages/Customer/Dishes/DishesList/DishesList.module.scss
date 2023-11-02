@@ -1,0 +1,28 @@
+.dish {
+    padding: 8px 8px;
+    margin-bottom: 24px;
+    outline: 4px solid var(--grey);
+    border-radius: 8px;
+    text-align: center;
+
+    &:hover {
+        box-shadow: var(--box-shadow);
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+    
+.image {
+    margin-top: 8px;
+    border-radius: 8px;
+}
+
+.add {
+    margin: 0 auto;
+}

@@ -1,0 +1,47 @@
+.container {
+    height: 100%;
+    padding: 16px;
+}
+
+.logo {
+    width: 160px;
+    height: 64px;
+    margin-left: auto;
+    border: 1px solid var(--grey);
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 96px;
+}
+
+.note {
+    opacity: 1;
+    text-align: center;
+}
+
+.input-group {
+    width: 360px;
+    margin-top: 32px;
+
+    + .input-group {
+        margin-top: 16px;
+    }
+}
+
+.label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.button {
+    margin-top: 16px;
+}

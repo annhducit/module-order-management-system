@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: inherit;
+}
+
+.left,
+.right {
+    width: 50%;
+    height: inherit;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 4px solid var(--grey);
+}
+
+.image {
+    width: 350px;
+    border-radius: 8px;
+    outline: 2px solid var(--dark-green);
+}
+
+.name {
+    margin-top: 24px;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.description {
+    margin-top: 16px;
+    
+    .title {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+}
+
+.input-note {
+    padding: 8px 16px;
+    width: 364px;
+    height: 84px;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    margin-top: 16px;
+    resize: none;
+
+    &:focus {
+        color: var(--black);
+        outline: 2px solid var(--dark-green);
+        background-color: var(--grey);
+    }
+}
+
+.btn-quantity {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-add {
+    margin-top: 16px;
+    margin-left: 143px;
+}
+
+.text {
+    font-weight: 300;
+    font-style: italic;
+}

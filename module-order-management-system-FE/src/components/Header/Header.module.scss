@@ -1,0 +1,95 @@
+.container {
+    height: 80px;
+    background-color: var(--dark-green);
+}
+
+.nav,
+.left,
+.right {
+    display: flex;
+    align-items: center;
+    height: inherit;
+}
+
+.nav {
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    width: 160px;
+    height: 64px;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    color: var(--grey);
+
+    .icon {
+        font-size: 3.2rem;
+    }
+
+    .text {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+.table,
+.question {
+    margin-left: 24px;
+}
+
+.table {
+    display: flex;
+    align-items: center;
+    color: var(--grey);
+    font-size: 1.8rem;
+
+    .table-icon {
+        color: var(--grey);
+        margin-right: 8px;
+        font-size: 3.2rem;
+    }
+}
+
+.control {
+    margin-left: 40px;
+}
+
+.search-bar {
+    display: flex;
+    width: 360px;
+    height: 48px;
+    border-radius: 8px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0 16px;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    font-size: 1.4rem;
+
+    &:focus  {
+        outline: 2px solid #ccc ;
+    }
+
+    &:focus + .search-btn {
+        outline: 2px solid #ccc ;
+    }
+}
+
+.search-btn {
+    background-color: var(--grey);
+    padding: 0 16px;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
