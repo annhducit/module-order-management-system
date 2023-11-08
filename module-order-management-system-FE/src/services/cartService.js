@@ -1,12 +1,12 @@
-const baseURL = process.env.REACT_APP_BASE_URL + '/cart';
+const baseURL = import.meta.env.REACT_APP_BASE_URL + "/cart";
 
 class CartService {
     async add(orderId, info) {
         try {
             const res = await fetch(`${baseURL}?id=${orderId}`, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(info),
             });

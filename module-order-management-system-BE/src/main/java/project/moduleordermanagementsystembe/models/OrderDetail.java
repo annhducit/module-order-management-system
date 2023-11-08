@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name = "order_details")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -20,10 +21,14 @@ public class OrderDetail {
     private String note;
 
     @ManyToOne
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "dishId")
     private Dish dish;
+
+    @ManyToOne
+    @JoinColumn(name = "billId")
+    private Bill bill;
 }

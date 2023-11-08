@@ -1,6 +1,7 @@
 .container {
     height: 80px;
     background-color: var(--dark-green);
+    padding: 0 40px;
 }
 
 .nav,
@@ -72,12 +73,12 @@
     border-bottom-left-radius: inherit;
     font-size: 1.4rem;
 
-    &:focus  {
-        outline: 2px solid #ccc ;
+    &:focus {
+        outline: 2px solid #ccc;
     }
 
     &:focus + .search-btn {
-        outline: 2px solid #ccc ;
+        outline: 2px solid #ccc;
     }
 }
 

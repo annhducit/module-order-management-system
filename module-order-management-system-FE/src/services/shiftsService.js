@@ -1,4 +1,4 @@
-const baseURL = process.env.REACT_APP_BASE_URL + "/shifts";
+const baseURL = import.meta.env.REACT_APP_BASE_URL + "/shifts";
 
 class ShiftsService {
     async getAll() {

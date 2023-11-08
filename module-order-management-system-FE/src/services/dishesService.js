@@ -1,10 +1,10 @@
-const baseURL = process.env.REACT_APP_BASE_URL + '/dishes';
+const baseURL = import.meta.env.REACT_APP_BASE_URL + "/dishes";
 
 class DishesService {
     async getAll(categoryId, search) {
         let url = "";
         if (categoryId && search.length > 0) {
-            url = `${baseURL}?categoryId=${categoryId}&search=${search}`
+            url = `${baseURL}?categoryId=${categoryId}&search=${search}`;
         } else if (categoryId) {
             url = `${baseURL}?categoryId=${categoryId}`;
         } else if (search.length > 0) {
@@ -42,9 +42,9 @@ class DishesService {
     async updateStatus(id, info) {
         try {
             const res = await fetch(`${baseURL}?id=${id}`, {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(info),
             });

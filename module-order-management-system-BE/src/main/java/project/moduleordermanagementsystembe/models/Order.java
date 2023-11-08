@@ -6,10 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -19,11 +21,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String customerPhone;
-    private float totalPrice;
-    private Date createAt;
+    private Integer tableNumber;
+    private float total;
+    private Date createdAt;
     private boolean isPaid;
 
-    @OneToMany(mappedBy = "order")
-    private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 }

@@ -1,4 +1,4 @@
-const baseURL = process.env.REACT_APP_BASE_URL + '/tables';
+const baseURL = import.meta.env.REACT_APP_BASE_URL + "/tables";
 
 class TablesService {
     async getAll() {

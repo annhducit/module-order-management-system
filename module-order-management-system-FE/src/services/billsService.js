@@ -1,10 +1,11 @@
-const baseURL = process.env.REACT_APP_BASE_URL + '/bills';
+/* eslint-disable no-useless-catch */
+const baseURL = import.meta.env.REACT_APP_BASE_URL + "/bills";
 
 class BillsService {
     async get(shiftId, date) {
         try {
             const res = await fetch(
-                `${baseURL}?shiftId=${shiftId}&date=${date}`,
+                `${baseURL}?shiftId=${shiftId}&date=${date}`
             );
             const json = await res.json();
             return json.data;
@@ -26,9 +27,9 @@ class BillsService {
     async create(info) {
         try {
             const res = await fetch(baseURL, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(info),
             });
