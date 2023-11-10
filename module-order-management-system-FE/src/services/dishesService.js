@@ -1,29 +1,22 @@
+import { api } from "../configs/config";
+
 const baseURL = import.meta.env.REACT_APP_BASE_URL + "/dishes";
 
 class DishesService {
-    async getAll(categoryId, search) {
-        let url = "";
-        if (categoryId && search.length > 0) {
-            url = `${baseURL}?categoryId=${categoryId}&search=${search}`;
-        } else if (categoryId) {
-            url = `${baseURL}?categoryId=${categoryId}`;
-        } else if (search.length > 0) {
-            url = `${baseURL}?search=${search}`;
-        } else {
-            url = baseURL;
-        }
+    async getAll() {
+        // let url = "";
+        // if (categoryId && search.length > 0) {
+        //     url = `${baseURL}?categoryId=${categoryId}&search=${search}`;
+        // } else if (categoryId) {
+        //     url = `${baseURL}?categoryId=${categoryId}`;
+        // } else if (search.length > 0) {
+        //     url = `${baseURL}?search=${search}`;
+        // } else {
+        //     url = baseURL;
+        // }
 
-        try {
-            const res = await fetch(url);
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            const json = await res.json();
-
-            return json.data;
-        } catch (err) {
-            console.err(`Error fetching data: ${err}`);
-        }
+        const data = await api.get("/dishes");
+        return data.data;
     }
 
     async getByCategoryId(categoryId) {

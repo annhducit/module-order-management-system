@@ -8,7 +8,7 @@ import { DishesContext } from "../DishesContext";
 import styles from "./DishesList.module.scss";
 
 const cx = classNames.bind(styles);
-const baseURL = import.meta.env.REACT_APP_BASE_URL;
+const baseURL = `http://localhost:5544/images/`;
 
 function DishesList({ dishes }) {
     const dishesContext = useContext(DishesContext);

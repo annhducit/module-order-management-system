@@ -6,11 +6,12 @@ import Quantity from "../../../../components/Quantity";
 
 import { DishesContext } from "../DishesContext";
 import styles from "./OrderDetails.module.scss";
+import { API_BASE_URL } from "../../../../configs/config";
 
 import { CustomerContext } from "../../CustomerContext";
 
 const cx = classNames.bind(styles);
-const baseURL = import.meta.env.REACT_APP_BASE_URL;
+const baseURL = `${API_BASE_URL}/images/`;
 
 function OrderDetails({ dish }) {
     const [quantity, setQuantity] = useState(1);

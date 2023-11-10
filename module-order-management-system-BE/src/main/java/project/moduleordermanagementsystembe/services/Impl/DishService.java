@@ -25,6 +25,11 @@ public class DishService implements IDishService {
     }
 
     @Override
+    public List<Object> readDishesByTableId(Integer tableId) {
+        return null;
+    }
+
+    @Override
     public List<Dish> findDishByCategory(Long id) {
         return dishRepository.findDishByCategory(id);
     }

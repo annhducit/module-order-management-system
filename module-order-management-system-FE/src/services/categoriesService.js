@@ -1,17 +1,10 @@
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/categories";
+import { api } from "../configs/config";
 
 class CategoriesService {
     async getAll() {
-        try {
-            const res = await fetch(baseURL);
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            const json = await res.json();
-            return json.data;
-        } catch (err) {
-            console.err(`Error fetching data: ${err}`);
-        }
+        const data = await api.get("/categories");
+        console.log(data.data);
+        return data.data;
     }
 }
 

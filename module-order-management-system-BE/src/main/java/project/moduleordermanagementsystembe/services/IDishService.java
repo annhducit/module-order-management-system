@@ -10,6 +10,7 @@ public interface IDishService {
 
     List<Dish> readAllDishes();
     Dish readDishById(Long id);
+    List<Object> readDishesByTableId(Integer tableId);
     List<Dish> findDishByCategory(Long id);
     Dish createDish(Dish dish);
     void deleteDishById(Long id);

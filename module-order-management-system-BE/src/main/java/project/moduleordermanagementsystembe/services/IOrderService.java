@@ -10,4 +10,5 @@ public interface IOrderService {
     Order readAllOrderById();
     Order updateOrder(Long id, Order order);
     Order deleteOrderById(Long id);
+    List<Object>getTableNumber(Long orderId);
 }

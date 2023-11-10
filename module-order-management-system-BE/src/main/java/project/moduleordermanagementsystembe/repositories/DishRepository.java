@@ -12,4 +12,6 @@ import java.util.List;
 public interface DishRepository extends JpaRepository<Dish, Long> {
     @Query("SELECT d FROM Dish d WHERE d.category.id = :categoryId")
     List<Dish> findDishByCategory(@Param("categoryId") Long categoryId);
+//    @Query("SELECT o.id, od.quantity, od.status, od.note, d.name, d.imageLink FROM Order o JOIN OrderDetail od ON od.dish.id = o.id JOIN Dish d WHERE o.id IN (SELECT order.id FROM OrderDetail WHERE tableNumber = :tableId)")
+//    List<Object> getOrderDetailsByTableNumber(@Param("tableId") int tableId);
 }

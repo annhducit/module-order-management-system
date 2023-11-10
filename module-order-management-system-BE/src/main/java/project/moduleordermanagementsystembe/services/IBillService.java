@@ -8,5 +8,5 @@ public interface IBillService {
     Bill createBill(Bill bill);
     Bill readBillById(Long id);
     List<Bill> readAllBills();
-    Bill deleteBillById(Long id);
+    void deleteBillById(Long id);
 }

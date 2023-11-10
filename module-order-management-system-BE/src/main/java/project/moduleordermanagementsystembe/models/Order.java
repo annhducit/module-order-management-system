@@ -1,5 +1,6 @@
 package project.moduleordermanagementsystembe.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "orders")
+@jakarta.persistence.Table(name = "orders")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -27,6 +28,7 @@ public class Order {
     private boolean isPaid;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
 }

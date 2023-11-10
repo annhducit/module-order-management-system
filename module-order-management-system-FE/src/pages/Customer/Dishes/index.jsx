@@ -31,9 +31,9 @@ function Dishes() {
     const navigate = useNavigate();
 
     // Authenticate the user
-    useEffect(() => {
-        orderId || navigate("/");
-    }, [orderId, navigate]);
+    // useEffect(() => {
+    //     orderId || navigate("/");
+    // }, [orderId, navigate]);
 
     // Render categories
     useEffect(() => {
@@ -45,6 +45,7 @@ function Dishes() {
             }
         };
         fetchApi();
+        console.log(categories);
 
         return () => (ignore = true);
     }, []);
@@ -54,10 +55,7 @@ function Dishes() {
         let ignore = false;
 
         const fetchApi = async () => {
-            const dishesData = await dishesService.getAll(
-                selectedCategoryId,
-                search
-            );
+            const dishesData = await dishesService.getAll();
 
             if (!ignore) {
                 setDishes(dishesData);

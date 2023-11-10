@@ -1,5 +1,6 @@
 package project.moduleordermanagementsystembe.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Dish {
     private EDishStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
+    @JsonIgnore
     private Category category;
 }

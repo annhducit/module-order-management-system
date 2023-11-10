@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "order_details")
+@jakarta.persistence.Table(name = "order_details")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -25,10 +25,10 @@ public class OrderDetail {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "dishId")
+    @JoinColumn(name = "dish_id")
     private Dish dish;
 
     @ManyToOne
-    @JoinColumn(name = "billId")
+    @JoinColumn(name = "bill_id")
     private Bill bill;
 }
