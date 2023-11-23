@@ -1,51 +1,32 @@
 import { api } from "../configs/config";
 
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/dishes";
-
 class DishesService {
     async getAll() {
-        // let url = "";
-        // if (categoryId && search.length > 0) {
-        //     url = `${baseURL}?categoryId=${categoryId}&search=${search}`;
-        // } else if (categoryId) {
-        //     url = `${baseURL}?categoryId=${categoryId}`;
-        // } else if (search.length > 0) {
-        //     url = `${baseURL}?search=${search}`;
-        // } else {
-        //     url = baseURL;
-        // }
-
         const data = await api.get("/dishes");
+        return data.data;
+    }
+
+    async getDishesByKeyword(keyword) {
+        const data = await api.get(`/dishes/search?keyword=${keyword}`);
         return data.data;
     }
 
     async getByCategoryId(categoryId) {
         try {
-            const res = await fetch(`${baseURL}?categoryId=${categoryId}`);
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            const json = await res.json();
-            return json.data;
+            const data = await api.get(
+                `/dishes/category?categoryId=${categoryId}`
+            );
+            return data.data;
         } catch (err) {
             throw err;
         }
     }
 
-    async updateStatus(id, info) {
+    async updateStatus(id, status) {
         try {
-            const res = await fetch(`${baseURL}?id=${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(info),
-            });
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
-            const json = await res.json();
-            return json;
+            const res = await api.put(`/dishes/${id}?status=${status}`);
+
+            return res;
         } catch (err) {
             throw err;
         }

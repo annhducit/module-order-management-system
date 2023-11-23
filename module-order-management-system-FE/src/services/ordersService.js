@@ -1,11 +1,11 @@
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/orders";
+import { api } from "../configs/config";
 
 class OrdersService {
     async getByTableId(tableId) {
         try {
-            const res = await fetch(`${baseURL}?tableId=${tableId}`);
-            const json = await res.json();
-            return json.data;
+            const res = await api.get(`/orders/?tableId=${tableId}`);
+
+            return res.data;
         } catch (err) {
             return [];
         }
@@ -13,20 +13,15 @@ class OrdersService {
 
     async updateOrderDetailsStatus(orderId, dishId, status) {
         try {
-            const res = await fetch(
-                `${baseURL}?orderId=${orderId}&dishId=${dishId}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ status }),
-                }
+            const data = JSON.stringify({ status });
+            const res = await api.put(
+                `/orders/${orderId}&dishId=${dishId}`,
+                data
             );
             if (!res.ok) {
                 throw new Error();
             }
-            await res.json();
+
             return "Dish status updated successfully";
         } catch (err) {
             throw new Error("Update dish status failed");

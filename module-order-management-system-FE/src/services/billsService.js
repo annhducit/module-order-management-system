@@ -1,14 +1,14 @@
 /* eslint-disable no-useless-catch */
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/bills";
+
+import { api } from "../configs/config";
 
 class BillsService {
     async get(shiftId, date) {
         try {
-            const res = await fetch(
-                `${baseURL}?shiftId=${shiftId}&date=${date}`
+            const data = await api.get(
+                `/bills/?shiftId=${shiftId}&date=${date}`
             );
-            const json = await res.json();
-            return json.data;
+            return data.data;
         } catch (err) {
             return [];
         }
@@ -16,9 +16,8 @@ class BillsService {
 
     async getDetails(id) {
         try {
-            const res = await fetch(`${baseURL}?id=${id}`);
-            const json = await res.json();
-            return json.data;
+            const data = await api.get(`/bills/${id}`);
+            return data.data;
         } catch (err) {
             return [];
         }
@@ -26,17 +25,10 @@ class BillsService {
 
     async create(info) {
         try {
-            const res = await fetch(baseURL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(info),
-            });
-            const json = await res.json();
-            if (!res.ok) {
-                throw new Error(json.message);
-            }
+            const data = JSON.stringify(info);
+            const res = await api.post(`/bills`, data);
+
+            return res;
         } catch (err) {
             throw err;
         }

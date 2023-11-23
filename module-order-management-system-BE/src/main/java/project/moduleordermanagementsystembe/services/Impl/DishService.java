@@ -2,6 +2,7 @@ package project.moduleordermanagementsystembe.services.Impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import project.moduleordermanagementsystembe.enums.EDishStatus;
 import project.moduleordermanagementsystembe.models.Dish;
 import project.moduleordermanagementsystembe.repositories.DishRepository;
 import project.moduleordermanagementsystembe.services.IDishService;
@@ -35,6 +36,11 @@ public class DishService implements IDishService {
     }
 
     @Override
+    public List<Dish> findDishByKeyword(String keyword) {
+        return dishRepository.findDishByKeyword(keyword);
+    }
+
+    @Override
     public Dish createDish(Dish dish) {
         return dishRepository.save(dish);
     }
@@ -54,5 +60,10 @@ public class DishService implements IDishService {
         isDish.setDescription(dish.getDescription());
         isDish.setImageLink(dish.getImageLink());
         return dishRepository.save(isDish);
+    }
+
+    @Override
+    public Dish updateDishStatus(Long id, EDishStatus status) {
+        return dishRepository.updateDishByStatus(id, String.valueOf(status));
     }
 }

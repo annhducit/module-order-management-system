@@ -25,6 +25,5 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @JsonIgnore
     private Category category;
 }

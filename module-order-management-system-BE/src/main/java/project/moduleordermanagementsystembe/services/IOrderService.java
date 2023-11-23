@@ -7,8 +7,8 @@ import java.util.List;
 public interface IOrderService {
     Order createOrder(Order order);
     List<Order> readAllOrders();
-    Order readAllOrderById();
+    Order readOrderById(Long id);
     Order updateOrder(Long id, Order order);
-    Order deleteOrderById(Long id);
+    void deleteOrderById(Long id);
     List<Object>getTableNumber(Long orderId);
 }

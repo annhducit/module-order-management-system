@@ -1,16 +1,9 @@
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/cart";
+import { api } from "../configs/config";
 
 class CartService {
     async add(orderId, info) {
         try {
-            const res = await fetch(`${baseURL}?id=${orderId}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(info),
-            });
-
+            const res = await api.post(`/carts/${orderId}`, info);
             if (!res.ok) return false;
             return true;
         } catch (err) {
@@ -19,14 +12,8 @@ class CartService {
     }
 
     async retrieve(orderId) {
-        try {
-            const res = await fetch(`${baseURL}?id=${orderId}`);
-            if (!res.ok) return [];
-            const json = await res.json();
-            return json.data;
-        } catch (err) {
-            throw err;
-        }
+        const res = await api.get(`/carts/${orderId}`);
+        return res.data;
     }
 }
 

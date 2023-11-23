@@ -9,14 +9,13 @@ import java.util.Optional;
 
 public interface IOrderDetailService {
 
-    boolean create(OrderDetail orderDetail);
+    OrderDetail create(OrderDetail orderDetail);
     OrderDetail readOrderDetailById(Long id);
     List<OrderDetail> readAllOrderDetail();
-    boolean updateOrderDetail(OrderDetail orderDetail);
-    boolean delete(Long id);
+    OrderDetail updateOrderDetail(Long id, OrderDetail orderDetail);
+    void delete(Long id);
     List<Object[]> readDishesByOrderId(Long id);
-    OrderDetail readOrderDetail(Long orderId, Long dishId);
+    OrderDetail readOrderDetail(Long orderId, Long dishId, int status);
 
-
-
+    OrderDetail createCart(Long orderId, OrderDetail orderDetail);
 }

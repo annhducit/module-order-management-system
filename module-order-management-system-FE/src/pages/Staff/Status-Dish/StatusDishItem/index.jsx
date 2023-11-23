@@ -6,22 +6,18 @@ import Button from "../../../../components/Button";
 
 import { AppContext } from "../../../../AppContext";
 import dishesService from "../../../../services/dishesService";
+import { API_BASE_URL } from "../../../../configs/config";
 
 const cx = classNames.bind(styles);
-const baseURL = import.meta.env.REACT_APP_BASE_URL;
+const baseURL = `${API_BASE_URL}/images/`;
 
 function StatusDishItem({ item, setDishes }) {
     const { toast } = useContext(AppContext);
 
-    const statusMap = {
-        0: "Out of ingredients",
-        1: "Available",
-    };
-
     function handleClickStatusInactive(dishId) {
         const fetchApi = async () => {
             try {
-                await dishesService.updateStatus(dishId, { status: 0 });
+                await dishesService.updateStatus(dishId, "UNAVAILABLE");
                 setDishes((dishes) => {
                     const index = dishes.findIndex((d) => d.id === dishId);
                     const clone = [...dishes];
@@ -43,7 +39,7 @@ function StatusDishItem({ item, setDishes }) {
     function handleClickStatusActive(dishId) {
         const fetchApi = async () => {
             try {
-                await dishesService.updateStatus(dishId, { status: 1 });
+                await dishesService.updateStatus(dishId, "AVAILABLE");
                 setDishes((dishes) => {
                     const index = dishes.findIndex((d) => d.id === dishId);
                     const clone = [...dishes];
@@ -77,10 +73,10 @@ function StatusDishItem({ item, setDishes }) {
                         <h3 className={cx("item-title")}>{item.name}</h3>
                         <p
                             className={cx("item-status", {
-                                success: item.status === 1,
+                                success: item.status === "AVAILABLE",
                             })}
                         >
-                            Status: {statusMap[item.status]}
+                            Status: {item.status}
                         </p>
                     </div>
                     <div className={cx("item-btn")}>
@@ -91,14 +87,14 @@ function StatusDishItem({ item, setDishes }) {
                                     handleClickStatusInactive(item.id)
                                 }
                             >
-                                Inactive
+                                Unavailable
                             </Button>
                         ) : (
                             <Button
                                 primary
                                 onClick={() => handleClickStatusActive(item.id)}
                             >
-                                Active
+                                Available
                             </Button>
                         )}
                     </div>

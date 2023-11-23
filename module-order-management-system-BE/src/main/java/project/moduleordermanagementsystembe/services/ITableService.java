@@ -5,7 +5,7 @@ import project.moduleordermanagementsystembe.models.Table;
 import java.util.List;
 
 public interface ITableService {
-    Table createTable(Table Table);
+    Table createTable(Table table);
 
     List<Table> readAllTables();
 

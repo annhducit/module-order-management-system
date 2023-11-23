@@ -1,20 +1,12 @@
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/open_table";
+import { api } from "../configs/config";
 
 class OpenTableService {
     async openTable(credentials) {
         try {
-            const res = await fetch(baseURL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(credentials),
-            });
-            const json = await res.json();
-            if (!res.ok) {
-                throw new Error(json.message);
-            }
-            return json.data;
+            const data = JSON.stringify(credentials);
+            const res = await api.post(`/tables`, data);
+
+            return res.data;
         } catch (err) {
             throw err;
         }

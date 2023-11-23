@@ -5,9 +5,9 @@ import project.moduleordermanagementsystembe.models.Shift;
 import java.util.List;
 
 public interface IShiftService {
-    Shift createShift(Shift Shift);
+    Shift createShift(Shift shift);
     List<Shift> readAllCategories();
-    Shift readShiftById();
-    Shift deleteShiftById(Long id);
-    Shift updateShiftById(Long id, Shift Shift);
+    Shift readShiftById(Long id);
+    void deleteShiftById(Long id);
+    Shift updateShiftById(Long id, Shift shift);
 }

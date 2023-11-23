@@ -9,3 +9,10 @@
     border: 4px solid var(--grey);
     border-radius: 8px;
 }
+
+.main-menu {
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 14px;
+}

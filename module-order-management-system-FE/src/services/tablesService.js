@@ -1,11 +1,10 @@
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/tables";
+import { api } from "../configs/config";
 
 class TablesService {
     async getAll() {
         try {
-            const res = await fetch(baseURL);
-            const json = await res.json();
-            return json.data;
+            const res = await api.get("/tables");
+            return res.data;
         } catch (err) {
             return [];
         }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,9 +36,9 @@ function Cart() {
     const total = subtotal + discount + tax;
 
     // Authenticate the user
-    useEffect(() => {
-        orderId || navigate("/");
-    }, [orderId, navigate]);
+    // useEffect(() => {
+    //     orderId || navigate("/");
+    // }, [orderId, navigate]);
 
     // Handle payment request
     function handleClickCheckout() {

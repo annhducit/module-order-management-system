@@ -6,9 +6,11 @@ import Button from "../../../../components/Button";
 
 import { DishesContext } from "../DishesContext";
 import styles from "./DishesList.module.scss";
+import { API_BASE_URL } from "../../../../configs/config";
 
 const cx = classNames.bind(styles);
-const baseURL = `http://localhost:5544/images/`;
+
+const baseURL = `${API_BASE_URL}/images/`;
 
 function DishesList({ dishes }) {
     const dishesContext = useContext(DishesContext);
@@ -21,7 +23,7 @@ function DishesList({ dishes }) {
     return (
         <div className={cx("container")}>
             <Row className={cx("gutter")}>
-                {dishes.map((dish) => (
+                {dishes?.map((dish) => (
                     <Column key={dish.id} className={cx("l-4")}>
                         <div className={cx("dish")}>
                             <div className={cx("header")}>

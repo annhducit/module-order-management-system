@@ -5,7 +5,7 @@ import project.moduleordermanagementsystembe.models.Staff;
 import java.util.List;
 
 public interface IStaffService {
-    Staff createStaff(Staff Staff);
+    Staff createStaff(Staff staff);
 
     List<Staff> readAllStaff();
 
@@ -13,7 +13,7 @@ public interface IStaffService {
 
     void deleteStaffById(Long id);
 
-    Staff updateStaffById(Long id, Staff Staff);
+    Staff updateStaffById(Long id, Staff staff);
 
     Staff readByUserName(String username);
 }

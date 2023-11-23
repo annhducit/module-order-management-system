@@ -1,11 +1,11 @@
-const baseURL = import.meta.env.REACT_APP_BASE_URL + "/shifts";
+import { api } from "../configs/config";
 
 class ShiftsService {
     async getAll() {
         try {
-            const res = await fetch(baseURL);
-            const json = await res.json();
-            return json.data;
+            const res = await api.get("/shifts");
+
+            return res.data;
         } catch (err) {
             return [];
         }

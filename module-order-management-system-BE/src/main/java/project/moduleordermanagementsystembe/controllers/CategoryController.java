@@ -14,7 +14,7 @@ import project.moduleordermanagementsystembe.services.Impl.CategoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;

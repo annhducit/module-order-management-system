@@ -6,6 +6,7 @@ import Input from "../Input";
 import styles from "./Sidebar.module.scss";
 
 import { MainLayoutContext } from "../../layouts/MainLayout/MainLayoutContext";
+import dishesService from "../../services/dishesService";
 
 const cx = classNames.bind(styles);
 
@@ -17,11 +18,20 @@ function Sidebar({
     items = [],
     selectedId,
     setSelectedId,
+    setDishes,
 }) {
     const { search, setSearch, setSearchInputValue } =
         useContext(MainLayoutContext);
 
     function handleClickItem(id) {
+        void (async () => {
+            const data =
+                id === null
+                    ? await dishesService.getAll()
+                    : await dishesService.getByCategoryId(id);
+
+            setDishes(data);
+        })();
         if (search) {
             setSearch("");
             setSearchInputValue("");

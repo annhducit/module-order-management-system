@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
@@ -9,6 +10,7 @@ import Sidebar from "../../../components/Sidebar";
 import { DishesContext } from "./DishesContext";
 import styles from "./Dishes.module.scss";
 import useModal from "../../../hooks/useModal";
+
 import categoriesService from "../../../services/categoriesService";
 import dishesService from "../../../services/dishesService";
 
@@ -27,49 +29,38 @@ function Dishes() {
     const [selectedDishId, setSelectedDishId] = useState(null);
     const [modalShow, toggleModalShow] = useModal(false);
     const { orderId } = useContext(CustomerContext);
-    const { search } = useContext(MainLayoutContext);
+    const { search, searchInputValue } = useContext(MainLayoutContext);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        void (async () => {
+            const data = await dishesService.getDishesByKeyword(
+                searchInputValue
+            );
+            setDishes(data);
+        })();
+    }, [searchInputValue]);
+
     // Authenticate the user
-    // useEffect(() => {
-    //     orderId || navigate("/");
-    // }, [orderId, navigate]);
+    useEffect(() => {
+        orderId || navigate("/");
+    }, [orderId, navigate]);
 
     // Render categories
     useEffect(() => {
-        let ignore = false;
-        const fetchApi = async () => {
+        void (async () => {
             const categoriesData = await categoriesService.getAll();
-            if (!ignore) {
-                setCategories(categoriesData);
-            }
-        };
-        fetchApi();
-        console.log(categories);
-
-        return () => (ignore = true);
+            setCategories(categoriesData);
+        })();
     }, []);
 
     // Render dishes corresponding to selected category & search
     useEffect(() => {
-        let ignore = false;
-
-        const fetchApi = async () => {
+        void (async () => {
             const dishesData = await dishesService.getAll();
-
-            if (!ignore) {
-                setDishes(dishesData);
-            }
-        };
-        fetchApi();
-
-        const intervalId = setInterval(fetchApi, 10 * 1000);
-
-        return () => {
-            ignore = true;
-            clearInterval(intervalId);
-        };
-    }, [selectedCategoryId, search]);
+            setDishes(dishesData);
+        })();
+    }, []);
 
     return (
         <div className={cx("container")}>
@@ -90,10 +81,14 @@ function Dishes() {
                                 all="All categories"
                                 selectedId={selectedCategoryId}
                                 setSelectedId={setSelectedCategoryId}
+                                setDishes={setDishes}
                             />
                         </Column>
                         <Column className={cx("l-9")}>
-                            <DishesList dishes={dishes} />
+                            <div className={cx("main-menu")}>
+                                {" "}
+                                <DishesList dishes={dishes} />
+                            </div>
                         </Column>
                     </Row>
                 </Grid>

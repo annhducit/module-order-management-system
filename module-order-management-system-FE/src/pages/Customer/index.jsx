@@ -44,7 +44,8 @@ function Customer() {
     // Handle add to cart
     async function addToCart(info) {
         try {
-            await cartService.add(orderId, info);
+            const data = JSON.stringify(info);
+            await cartService.add(orderId, data);
             const cartData = await cartService.retrieve(orderId);
             setCart(cartData);
             toast("Add to cart succesfully!", {

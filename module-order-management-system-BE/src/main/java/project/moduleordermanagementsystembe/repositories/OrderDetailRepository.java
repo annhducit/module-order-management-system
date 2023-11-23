@@ -18,8 +18,14 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> 
         "WHERE D.id IN (SELECT od.dish.id FROM OrderDetail od WHERE od.order.id = :orderId)")
     List<Object[]> readDishByOrderId(@Param("orderId") Long orderId);
 
-    @Query("SELECT od FROM OrderDetail od WHERE od.order.id = :orderId AND od.dish.id = :dishId")
-    OrderDetail readOrderDetailByOrderAndDish(@Param("orderId") int orderId, @Param("dishId") int dishId);
+    @Query("SELECT od FROM OrderDetail od WHERE od.order.id = :orderId AND od.dish.id = :dishId AND od.status = :status")
+    OrderDetail readOrderDetailByOrderAndDishAndStatus(@Param("orderId") Long orderId, @Param("dishId") Long dishId, @Param("status") int status);
+
+    @Query("SELECT SUM(D.price * OD.quantity) FROM Dish D " +
+        "JOIN OrderDetail OD ON OD.dish.id = D.id " +
+        "WHERE OD.order.id = :orderId AND OD.status = 2")
+    Double calculateTotalPriceForOrder(@Param("orderId") Long orderId);
+
 
 
 

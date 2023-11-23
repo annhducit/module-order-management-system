@@ -20,6 +20,13 @@ public class OrderDetail {
     private int status;
     private String note;
 
+    public OrderDetail(Long id, int quantity, int status, String note) {
+        this.id = id;
+        this.quantity = quantity;
+        this.status = status;
+        this.note = note;
+    }
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

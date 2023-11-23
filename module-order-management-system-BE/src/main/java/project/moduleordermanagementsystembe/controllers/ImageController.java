@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.*;
 
-@RequestMapping("/images")
+@RequestMapping("/api/images")
 @Controller
 public class ImageController {
 
